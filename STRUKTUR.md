@@ -33,6 +33,12 @@ falsch — korrigiert 30.8.2026). Karten abgeschlossener Sessions (älter als
 werden direkt unter dem KARTEN-Anker eingefügt (jüngste zuoberst).
 
 <!-- KARTEN -->
+## Session 19.9.2026 — `W2·5m-LESER-V3`: Gliederung — Art. 26 SVG unsichtbar, unterste Ebene klappte nicht auf (2 PRs, davon 1 Risikopfad)
+- Befund David 19.9.2026 («svg art. 26 nicht ersichtlich … unterste ebene klappt oft nicht auf», Nachtrag «auch das aufklappen soll optimiert werden»). Gemessen statt geraten (echte Leser-Kette, 231 Bundeserlasse): Daten korrekt, Fehler in der Anzeige — eigener Offen-Schlüssel der Artikel-Ebene (`art@`) lief mit dem Zeilenzustand auseinander (4'586 «offen, aber leer»-Zeilen nach Mitlaufen/Sprung), Artikel direkt unter gemischten Knoten ausgefiltert.
+- #924 (Anzeige, kein Risikopfad): «offen» aus dem Sichtbaren (`zeilenAnsicht`), alle Öffner/Schliesser über `klappKarte.ts`, ein Klick öffnet ganz, Marke nach Sprung auf dem Artikel; Wächter `gliederung-sichtbarkeit` + `gliederung-zustandsfolgen` (je rot gezeigt). Zwei Code-Zweitblicke (Sonnet): 1. fand Tieflink→Auto-Zu→Mitlaufen-Leck → Nachzug; 2. ok, Tradeoff offengelegt (direkte Artikel gemischter Knoten beim Mitlaufen, max. 26 Zeilen AHVV; a33-CLS grün). Browser-Probe lokal (SVG, OR).
+- #923 (Risikopfad, Extraktor): SVG-Randtitel-Container `tit_3/lvl_u1` vererbte «Grundregel» an Art. 27–57b; Fix generisch in `struktur-extrahiere.ts`, nur `SVG.json` geändert. Gegenprüfung bestanden (Sonnet, `8c713fca4`). Im Queue-Lauf von `check:merge-schutz` abgewiesen (Verdikt-Trailer im Queue-Squash nicht gelesen — Wurzel-Fix #925, fremde Session); danach neu eingereiht.
+- Lehre verankert: `.claude/rules/webseiten-pruefung.md` «Drittens — Zustand ist eine Folge». Nebenfunde als Checklisten-Zeilen unter W2·5m-LESER-V3 (8 Artikel ohne eigene Zeile, Extraktor HTML statt XML-`role=marginal`, CLS-Flake `leser-funktionszeile-zaehler`).
+
 ## Session 18.9.2026 (3) — `W2·5m-LESER-V3`: Standort-Marke lief beim Lesen nie mit — verhungerte Entprellung (2 PRs, kein Risikopfad)
 
 - Orchestrator Opus 5; Bau `lex-bau` auf Opus, Gegenprüfung `lex-pruefung` auf Sonnet (Prüfer ≠ Bau-Modell), Ist-Inventar `lex-recherche` auf Sonnet. **Gelandet:** #914 Fix + Wächter (`606b19066`, Deploy-Job success, Perf-Budget success) · #916 Wächter auf Synchronität geschärft.
